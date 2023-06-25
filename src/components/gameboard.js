@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import WordDisplay from './worddisplay';
 import Keyboard from './keyboard';
 import words from '../data/word';
+import Feedback from './feedback';
 
 const GameBoard = () => {
   const [selectedWord, setSelectedWord] = useState('');
