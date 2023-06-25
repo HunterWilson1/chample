@@ -1,10 +1,11 @@
 
 import './App.css';
+import GameBoard from './components/gameboard';
 
 function App() {
   return (
-    <div className="App">
-
+    <div className="app bg-slate-400">
+      <GameBoard />
     </div>
   );
 }
