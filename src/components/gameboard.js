@@ -37,4 +37,51 @@ const GameBoard = () => {
     }
   };
 
-  
+  const gameWon = () => {
+    for (let letter of selectedWord) {
+      if (!guessedLetters.includes(letter)) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const gameLost = () => {
+    return remainingAttempts === 0;
+  };
+
+  const gameEnded = gameWon() || gameLost();
+
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">Chample</h1>
+        {gameEnded ? (
+          <div>
+            {gameWon() && (
+              <h2 className="text-2xl mb-4">Congratulations! You won!</h2>
+            )}
+            {gameLost() && (
+              <h2 className="text-2xl mb-4">Game Over! You lost!</h2>
+            )}
+            <button
+              className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+              onClick={startNewGame}
+            >
+              Start New Game
+            </button>
+          </div>
+        ) : (
+          <div>
+            <WordDisplay selectedWord={selectedWord} guessedLetters={guessedLetters} />
+            <Keyboard handleGuess={handleGuess} />
+            <Feedback selectedWord={selectedWord} guessedLetters={guessedLetters} />
+            <p className="text-xl mt-4">Remaining Attempts: {remainingAttempts}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default GameBoard;
