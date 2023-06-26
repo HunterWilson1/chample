@@ -4,7 +4,7 @@ const Keyboard = ({ handleGuess }) => {
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   return (
-    <div className="flex flex-wrap gap-2 pt-11">
+    <div className="flex flex-wrap gap-2 pt-11 justify-center">
       {alphabet.split('').map((letter, index) => (
         <button
           key={index}

@@ -56,14 +56,27 @@ const GameBoard = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Chample</h1>
+        <h1 className="text-4xl font-bold mb-4 pb-8">Chample</h1>
+        <div>
+          <h2 className="text-2xl mb-4">How It Works:</h2>
+          <p className="text-lg mb-8">
+            Welcome to Chample! The goal of the game is to guess the hidden word by selecting letters from the on-screen keyboard.
+            You have 6 attempts to guess the word correctly. Each incorrect guess will reduce the remaining attempts by 1.
+            If you guess all the letters of the word correctly within the given attempts, you win the game!
+            But be careful, if you run out of attempts before guessing the word, you lose the game.
+          </p>
+        </div>
         {gameEnded ? (
           <div>
             {gameWon() && (
-              <h2 className="text-2xl mb-4">Congratulations! You won!</h2>
+              <h2 className="text-2xl mb-4"></h2>
             )}
             {gameLost() && (
-              <h2 className="text-2xl mb-4">Game Over! You lost!</h2>
+              <h2 className="text-2xl mb-4">
+                Game Over! You lost!
+                <br />
+                The champion was: {selectedWord}
+              </h2>
             )}
             <button
               className="bg-blue-500 text-white font-bold py-2 px-4 rounded"

@@ -7,7 +7,7 @@ const WordDisplay = ({ selectedWord, guessedLetters }) => {
     .join(' ');
 
   return (
-    <div className="word-display">
+    <div className="word-display pt-8">
       <h2 className="text-4xl tracking-widest">{wordToShow}</h2>
     </div>
   );
