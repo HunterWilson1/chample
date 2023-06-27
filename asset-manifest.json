@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/chample/static/css/main.768178cd.css",
+    "main.js": "/chample/static/js/main.598a9976.js",
+    "index.html": "/chample/index.html",
+    "main.768178cd.css.map": "/chample/static/css/main.768178cd.css.map",
+    "main.598a9976.js.map": "/chample/static/js/main.598a9976.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.768178cd.css",
+    "static/js/main.598a9976.js"
+  ]
+}
