@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/chample/static/css/main.768178cd.css",
-    "main.js": "/chample/static/js/main.598a9976.js",
+    "main.js": "/chample/static/js/main.a49593e1.js",
     "index.html": "/chample/index.html",
     "main.768178cd.css.map": "/chample/static/css/main.768178cd.css.map",
-    "main.598a9976.js.map": "/chample/static/js/main.598a9976.js.map"
+    "main.a49593e1.js.map": "/chample/static/js/main.a49593e1.js.map"
   },
   "entrypoints": [
     "static/css/main.768178cd.css",
-    "static/js/main.598a9976.js"
+    "static/js/main.a49593e1.js"
   ]
 }
