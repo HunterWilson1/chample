@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WordDisplay from './worddisplay';
 import Keyboard from './keyboard';
 import words from '../data/word';
 import Feedback from './feedback';
+import Confetti from 'react-confetti';
 
 const GameBoard = () => {
   const [selectedWord, setSelectedWord] = useState('');
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [remainingAttempts, setRemainingAttempts] = useState(6);
+  const [isGameWon, setIsGameWon] = useState(false);
+
+  useEffect(() => {
+    startNewGame(); // Start a new game when the component mounts
+  }, []);
 
   const startNewGame = () => {
     if (words.length === 0) {
@@ -20,6 +26,7 @@ const GameBoard = () => {
     setSelectedWord(newWord);
     setGuessedLetters([]);
     setRemainingAttempts(6);
+    setIsGameWon(false);
   };
 
   const handleGuess = (letter) => {
@@ -53,6 +60,23 @@ const GameBoard = () => {
 
   const gameEnded = gameWon() || gameLost();
 
+  const confettiConfig = {
+    angle: 90,
+    spread: 360,
+    startVelocity: 40,
+    elementCount: 70,
+    dragFriction: 0.1,
+    duration: 2000,
+    delay: 0,
+    colors: ['#ffffff'],
+  };
+
+  useEffect(() => {
+    if (gameWon()) {
+      setIsGameWon(true);
+    }
+  }, [selectedWord, guessedLetters]);
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="text-center">
@@ -60,7 +84,7 @@ const GameBoard = () => {
         <div>
           <h2 className="text-2xl mb-4">How It Works:</h2>
           <p className="text-lg mb-8">
-            Welcome to Chample! The goal of the game is to guess the hidden word by selecting letters from the on-screen keyboard.
+            Welcome to Chample! The goal of the game is to guess the hidden League of legend champion by selecting letters from the on-screen keyboard.
             You have 6 attempts to guess the word correctly. Each incorrect guess will reduce the remaining attempts by 1.
             If you guess all the letters of the word correctly within the given attempts, you win the game!
             But be careful, if you run out of attempts before guessing the word, you lose the game.
@@ -69,7 +93,22 @@ const GameBoard = () => {
         {gameEnded ? (
           <div>
             {gameWon() && (
-              <h2 className="text-2xl mb-4"></h2>
+              <>
+                <h2 className="text-2xl mb-4">Congratulations! You won!</h2>
+                <Confetti
+                  width={window.innerWidth}
+                  height={window.innerHeight}
+                  gravity={0.1}
+                  recycle={false}
+                  numberOfPieces={200}
+                  tweenDuration={2000}
+                  confettiSource={{ x: window.innerWidth / 2, y: 0 }}
+                  initialVelocityX={5}
+                  initialVelocityY={20}
+                  colors={['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#8B00FF']}
+                  shapes={['star']}
+                />
+              </>
             )}
             {gameLost() && (
               <h2 className="text-2xl mb-4">
